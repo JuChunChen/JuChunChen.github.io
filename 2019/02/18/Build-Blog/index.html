@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>如何使用Hexo+github搭建博客！ | Tracegle | 探索时间的迹线!</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#D32F2F">
+    
+    
+    <meta name="keywords" content="Hexo,Git">
+    <meta name="description" content="前言 我认为写一个博客记录在学习过程遇到的问题或者表达个人见解，亦或是收集资料，是很有必要的。一开始我都是将一些学习总结放在有道云笔记里，确实大佬的产品是很好用，也支持markdown编辑，但渐渐接触了一些技术性的网站，如CSDN，GITHUB等，大佬太多了，里面也都是markdown编辑器；于是我也选择了markdown😬；所以选择了Hexo！ 为什么选择hexo 很久之前就知道有这个博客框架">
+<meta name="keywords" content="Hexo,Git">
+<meta property="og:type" content="article">
+<meta property="og:title" content="如何使用Hexo+github搭建博客！">
+<meta property="og:url" content="http://yoursite.com/2019/02/18/Build-Blog/index.html">
+<meta property="og:site_name" content="Tracegle">
+<meta property="og:description" content="前言 我认为写一个博客记录在学习过程遇到的问题或者表达个人见解，亦或是收集资料，是很有必要的。一开始我都是将一些学习总结放在有道云笔记里，确实大佬的产品是很好用，也支持markdown编辑，但渐渐接触了一些技术性的网站，如CSDN，GITHUB等，大佬太多了，里面也都是markdown编辑器；于是我也选择了markdown😬；所以选择了Hexo！ 为什么选择hexo 很久之前就知道有这个博客框架">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://i.loli.net/2019/02/18/5c6a24b1e9e37.png">
+<meta property="og:image" content="https://i.loli.net/2019/02/18/5c6a31187a72e.png">
+<meta property="og:image" content="https://i.loli.net/2019/02/18/5c6a355e03094.png">
+<meta property="og:image" content="https://i.loli.net/2019/02/18/5c6a38c8dfbe9.png">
+<meta property="og:image" content="https://i.loli.net/2019/02/18/5c6a383e03c3e.png">
+<meta property="og:image" content="https://i.loli.net/2019/02/18/5c6a713252c61.png">
+<meta property="og:updated_time" content="2019-02-18T09:34:56.697Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="如何使用Hexo+github搭建博客！">
+<meta name="twitter:description" content="前言 我认为写一个博客记录在学习过程遇到的问题或者表达个人见解，亦或是收集资料，是很有必要的。一开始我都是将一些学习总结放在有道云笔记里，确实大佬的产品是很好用，也支持markdown编辑，但渐渐接触了一些技术性的网站，如CSDN，GITHUB等，大佬太多了，里面也都是markdown编辑器；于是我也选择了markdown😬；所以选择了Hexo！ 为什么选择hexo 很久之前就知道有这个博客框架">
+<meta name="twitter:image" content="https://i.loli.net/2019/02/18/5c6a24b1e9e37.png">
+    
+        <link rel="alternate" type="application/atom+xml" title="Tracegle" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="https://i.loli.net/2017/11/26/5a19c0b50432e.png">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide">
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(https://i.loli.net/2019/02/12/5c6289f6994c6.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="https://i.loli.net/2019/02/12/5c62c33654e1a.png">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">JachinChen</h5>
+          <a href="mailto:63039844@qq.com" title="63039844@qq.com" class="mail">63039844@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/">
+                <i class="icon icon-lg icon-home"></i>
+                Home
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives">
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags">
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories">
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/juchunchen" target="_blank">
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="http://www.weibo.com/5462399669" target="_blank">
+                <i class="icon icon-lg icon-weibo"></i>
+                Weibo
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/about">
+                <i class="icon icon-lg icon-code"></i>
+                About
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">如何使用Hexo+github搭建博客！</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">如何使用Hexo+github搭建博客！</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2019-02-18T00:31:25.000Z" itemprop="datePublished" class="page-time">
+  2019-02-18
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/正常的文章/">正常的文章</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#前言"><span class="post-toc-number">1.</span> <span class="post-toc-text">前言</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#为什么选择hexo"><span class="post-toc-number">2.</span> <span class="post-toc-text">为什么选择hexo</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#搭建环境"><span class="post-toc-number">3.</span> <span class="post-toc-text">搭建环境</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#本地博客搭建"><span class="post-toc-number">4.</span> <span class="post-toc-text">本地博客搭建</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#安装hexo"><span class="post-toc-number">4.1.</span> <span class="post-toc-text">安装Hexo</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#初始化网站"><span class="post-toc-number">4.2.</span> <span class="post-toc-text">初始化网站</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#hexo命令操作"><span class="post-toc-number">4.3.</span> <span class="post-toc-text">Hexo命令操作</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#远程部署github"><span class="post-toc-number">5.</span> <span class="post-toc-text">远程部署GitHub</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#创建仓库"><span class="post-toc-number">5.1.</span> <span class="post-toc-text">创建仓库</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#配置ssh"><span class="post-toc-number">5.2.</span> <span class="post-toc-text">配置SSH</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#同步代码"><span class="post-toc-number">5.3.</span> <span class="post-toc-text">同步代码</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#配置主题"><span class="post-toc-number">6.</span> <span class="post-toc-text">配置主题</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#下载"><span class="post-toc-number">6.1.</span> <span class="post-toc-text">下载</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#激活"><span class="post-toc-number">6.2.</span> <span class="post-toc-text">激活</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#支持emoji表情😂😂😂"><span class="post-toc-number">6.3.</span> <span class="post-toc-text">支持emoji表情😂😂😂</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#valine评论系统"><span class="post-toc-number">6.4.</span> <span class="post-toc-text">valine评论系统</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#添加关于页面"><span class="post-toc-number">6.5.</span> <span class="post-toc-text">添加关于页面</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#typora-一款强大的markdown编辑器"><span class="post-toc-number">7.</span> <span class="post-toc-text">Typora 一款强大的markDown编辑器</span></a></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-Build-Blog" class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">如何使用Hexo+github搭建博客！</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2019-02-18 08:31:25" datetime="2019-02-18T00:31:25.000Z" itemprop="datePublished">2019-02-18</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/正常的文章/">正常的文章</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style="display:none">
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h2 id="前言">前言</h2>
+<p>我认为写一个博客记录在学习过程遇到的问题或者表达个人见解，亦或是收集资料，是很有必要的。一开始我都是将一些学习总结放在有道云笔记里，确实大佬的产品是很好用，也支持markdown编辑，但渐渐接触了一些技术性的网站，如CSDN，GITHUB等，大佬太多了，里面也都是markdown编辑器；于是我也选择了markdown😬；所以选择了Hexo！</p>
+<h2 id="为什么选择hexo">为什么选择hexo</h2>
+<p>很久之前就知道有这个博客框架，一直没有去体验过(懒:😅)。而且，这个博客是不需要自己去购置服务器的，搭配github page服务甚至域名都不用去买。以前折腾过一个wordpress站点，然后也因为各种原因不了了之了。总体使用感觉简单易用，有很强大的后台；但也稍显臃肿。<code>Hexo</code>是一个快速、简洁且高效的博客框架。<code>Hexo</code>使用Markdown（或其他渲染引擎）解析文章，在几秒之内，即可利用靓丽的主题生成静态网页。</p>
+<h2 id="搭建环境">搭建环境</h2>
+<ol>
+<li>git是一个版本控制管理工具，这个主要是在Hexo发布文章的时候起连接作用。将本地的博客同步到GitHub上面。<a href="http://git-scm.com/" target="_blank" rel="noopener">Git</a> 下载，并安装。</li>
+<li>Node.js](<a href="http://nodejs.org/" target="_blank" rel="noopener">http://nodejs.org/</a>) 下载，并安装。如果网不好可以去国内的中文站 <a href="http://nodejs.cn/download/" target="_blank" rel="noopener">Node.js中文站</a></li>
+</ol>
+<blockquote>
+<p>命令行(Git bash)输入以下命令查看当前版本若无错误则安装成功.</p>
+</blockquote>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">node -v</span><br><span class="line">npm -v</span><br></pre></td></tr></table></figure>
+<p><img src="https://i.loli.net/2019/02/18/5c6a24b1e9e37.png" alt="1212.png"></p>
+<h2 id="本地博客搭建">本地博客搭建</h2>
+<h3 id="安装hexo">安装Hexo</h3>
+<p>通过‘npm’安装Hexo，在命令行(Git Bash)中输入:</p>
+<p><code>npm install -g hexo-cli</code></p>
+<h3 id="初始化网站">初始化网站</h3>
+<p>在你电脑的任意位置创建一个文件夹作为博客的目录，通过一下Hexo命令进行初始化</p>
+<p><code>hexo init cd &lt;folder&gt; npm install</code></p>
+<p>执行完成后你会发现文件加里会多处一下路径文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">├── _config.yml</span><br><span class="line">├── package.json</span><br><span class="line">├── scaffolds</span><br><span class="line">|	├─ draft</span><br><span class="line">|	└── page</span><br><span class="line">|	└── post</span><br><span class="line">├── source   </span><br><span class="line">|   └── _posts</span><br><span class="line">└── themes</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>Hexo相关命令均在<strong>站点目录</strong>下，使用<strong>Git Bash</strong>运行。</p>
+<p><code>config.yml</code><br>
+博客的站点配置文件，博客的名称、关键词、作者、语言、博客主题…设置都在里面可以修改。路径<folder>\themes&lt;主题文件夹&gt;_config.yml为主题配置文件</folder></p>
+<p><code>scaffolds</code><br>
+Hexo的模板文件，内置了3个是新添加博客文章（posts）、新添加博客页（page）和新添加草稿（draft）的目标样式。<br>
+<code>source</code><br>
+source是放置我们博客内容的地方，里面初始只有两个文件夹，一个是drafts（草稿），一个posts（文章），但之后我们通过命令新建tags（标签）还有categories（分类）页后，这里会相继地增加文件夹。<br>
+<code>themes</code><br>
+放置主题文件包的地方。Hexo会根据这个文件来生成静态页面。初始状态下只有landscape这个初始主题；后续可以上网找更多精美住主题。</p>
+</blockquote>
+<h3 id="hexo命令操作">Hexo命令操作</h3>
+<blockquote>
+<p>Hexo有详尽的中文文档，网址：<a href="https://hexo.io/zh-cn/docs/" target="_blank" rel="noopener">https://hexo.io/zh-cn/docs/</a></p>
+</blockquote>
+<ul>
+<li><code>hexo new &lt;layout&gt; &quot;title&quot;</code>  新建文章或页面</li>
+<li><code>hexo clean</code>  清除掉已经生成的旧文件</li>
+<li><code>hexo generate</code>或<code>hexo g</code> 生成静态页面</li>
+<li><code>hexo serve</code>或<code>hexo s</code>  启动本地服务器浏览器访问<code>http://localhost:4000/</code>可本地预览生成的文件，本地没问题之后，<strong>Ctrl + C</strong> 停掉本地预览</li>
+</ul>
+<p>执行 <code>hexo s</code>后浏览器访问网址查看本地效果： <code>http://localhost:4000/</code></p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2019/02/18/5c6a31187a72e.png" alt="701869-c7b8e928247c8667..png" title="">
+                </div>
+                <div class="image-caption">701869-c7b8e928247c8667..png</div>
+            </figure>
+<blockquote>
+<p>至此，您的Hexo博客已经搭建在本地了😄,革命尚未成功，请君继续往下看。</p>
+</blockquote>
+<h2 id="远程部署github">远程部署GitHub</h2>
+<ul>
+<li>[x] 首先你需要注册<a href="https://github.com" target="_blank" rel="noopener">GitHub</a>，这里就不演示了</li>
+</ul>
+<h3 id="创建仓库">创建仓库</h3>
+<p>新建一个仓库，项目名一定要是用户名.github.io的形式，会自动开启github Page服务，(README.md可选可不选)<br>
+比如，我的用户名是JuChunChen，则我的仓库名必须是<code>JuChunChen.github.io</code>我创建过了你们就自行创建。</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2019/02/18/5c6a355e03094.png" alt="3.png" title="">
+                </div>
+                <div class="image-caption">3.png</div>
+            </figure>
+<h3 id="配置ssh">配置SSH</h3>
+<blockquote>
+<p>创建SSH-Key，没有SSH-Key的话，git是不能将本地的代码部署到GitHub的。</p>
+</blockquote>
+<p>在GitBash中执行</p>
+<p><code>git config --global user.name &quot;yourself&quot;</code></p>
+<p><code>git config --global user.email yourself@example.com</code></p>
+<p><code>ssh-keygen -t rsa -C &quot;邮箱地址&quot;</code></p>
+<p><img src="https://i.loli.net/2019/02/18/5c6a38c8dfbe9.png" alt=""></p>
+<ul>
+<li>添加到 github。 复制密钥文件内容（路径形如<code>C:\Users\yourself\.ssh\id_rsa.pub</code>），粘贴到<a href="https://github.com/settings/keys" target="_blank" rel="noopener">New SSH Key</a>即可。</li>
+</ul>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2019/02/18/5c6a383e03c3e.png" alt="4.png" title="">
+                </div>
+                <div class="image-caption">4.png</div>
+            </figure>
+<h3 id="同步代码">同步代码</h3>
+<blockquote>
+<p>安装hexo deploy部署插件</p>
+</blockquote>
+<p><code>npm install hexo-deployer-git --save</code></p>
+<ul>
+<li>修改<code>_config.yml</code>用编辑器打开此文件，按照以下配置deploy信息.</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># Deployment</span><br><span class="line">## Docs: https://hexo.io/docs/deployment.html</span><br><span class="line">deploy:</span><br><span class="line">  type: git</span><br><span class="line">  repo: git@github.com:&lt;Github账号名称&gt;/&lt;Github账号名称&gt;.github.io.git</span><br><span class="line">  branch: master</span><br></pre></td></tr></table></figure>
+<ul>
+<li>执行 <code>hexo deploy</code> 或 <code>hexo d</code>同步代码到GitHub上，然后你的仓库就会生成public里的文件。</li>
+</ul>
+<p><img src="https://i.loli.net/2019/02/18/5c6a713252c61.png" alt="2.png"></p>
+<blockquote>
+<p>等待1分钟左右，浏览器访问网址： <code>https://&lt;Github账号名称&gt;.github.io</code>你的网站就已经成功上线了😏</p>
+</blockquote>
+<h2 id="配置主题">配置主题</h2>
+<p>本站主题为yscoder写的<a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank" rel="noopener">indigo</a>，喜欢Material风的盆友😀可以直接装，当然也有更多主题可访问hexo官网。或者移步<a href="https://github.com/search?q=hexo-theme" target="_blank" rel="noopener">https://github.com/search?q=hexo-theme</a>查看更多主题；若您是dalao也可以自己用框架写✍.</p>
+<h3 id="下载">下载</h3>
+<p><code>git clone https://github.com/yscoder/hexo-theme-indigo .git themes/hexo-theme-indigo</code></p>
+<h3 id="激活">激活</h3>
+<p>将<code>_config.yml</code> 里的 <code>theme</code> 字段内容改为 <code>hexo-theme-indigo</code> 。</p>
+<p>本主题帮助文档:<a href="https://github.com/yscoder/hexo-theme-indigo/wiki" target="_blank" rel="noopener">https://github.com/yscoder/hexo-theme-indigo/wiki</a></p>
+<hr>
+<h3 id="支持emoji表情😂😂😂">支持emoji表情😂😂😂</h3>
+<ul>
+<li>安装<strong>markdown-it-emoji</strong>插件</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install markdown-it-emoji --save</span><br></pre></td></tr></table></figure>
+<ul>
+<li>在hexo的配置文件<code>_config.yml</code> 下添加markdown-it配置代码：</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">markdown:</span><br><span class="line">  render:</span><br><span class="line">    html: true</span><br><span class="line">    xhtmlOut: false</span><br><span class="line">    breaks: true</span><br><span class="line">    linkify: true</span><br><span class="line">    typographer: true</span><br><span class="line">    quotes: &apos;“”‘’&apos;</span><br><span class="line">  plugins:</span><br><span class="line">    - markdown-it-abbr</span><br><span class="line">    - markdown-it-footnote</span><br><span class="line">    - markdown-it-ins</span><br><span class="line">    - markdown-it-sub</span><br><span class="line">    - markdown-it-sup</span><br><span class="line">    - markdown-it-emoji  #用emoji插件</span><br><span class="line">  anchors:</span><br><span class="line">    level: 2</span><br><span class="line">    collisionSuffix: &apos;v&apos;</span><br><span class="line">    permalink: false</span><br><span class="line">    permalinkClass: header-anchor</span><br><span class="line">    permalinkSymbol: ¶</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>这么简单的操作，当时博主折腾了好久😭</p>
+</blockquote>
+<hr>
+<h3 id="valine评论系统">valine评论系统</h3>
+<p>使用方法请到他的官网查看，并结合下面的配置文件详细添加appID和appKey<br>
+<a href="https://valine.js.org/" target="_blank" rel="noopener">https://valine.js.org/</a></p>
+<h3 id="添加关于页面">添加关于页面</h3>
+<p><code>hexo new page about</code></p>
+<p>在元文件source/about/index.md中添加<br>
+<code>title: About</code><br>
+<code>layout: page</code></p>
+<blockquote>
+<p>如果你看到这了；应该可以捣鼓折腾下来，一个Blog就这么建好了</p>
+<p>你可以通过任意编辑器编辑md文件使用markdown写文章，然后通</p>
+<p>过hexo来生成，部署。🤪</p>
+</blockquote>
+<h2 id="typora-一款强大的markdown编辑器">Typora 一款强大的markDown编辑器</h2>
+<p>markdown有许多好用的编辑器，但我正在使用的是Typora；个人使用体验还不错；可视化预览，边写边看很轻松；对初学者很友好😐</p>
+<blockquote>
+<p>下载地址：<a href="https://www.typora.io/" target="_blank" rel="noopener">https://www.typora.io/</a></p>
+</blockquote>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2019-02-18T09:34:56.697Z" itemprop="dateUpdated">2019-02-18 17:34:56</time>
+</span><br>
+
+
+        
+        生命不息，折腾不止！一起在迹线里成长。
+        
+    </div>
+    
+    <footer>
+        <a href="http://yoursite.com">
+            <img src="https://i.loli.net/2019/02/12/5c62c33654e1a.png" alt="JachinChen">
+            JachinChen
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Git/">Git</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Hexo/">Hexo</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2019/02/18/Build-Blog/&title=《如何使用Hexo+github搭建博客！》 — Tracegle&pic=https://i.loli.net/2019/02/12/5c62c33654e1a.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2019/02/18/Build-Blog/&title=《如何使用Hexo+github搭建博客！》 — Tracegle&source=hello!" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2019/02/18/Build-Blog/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《如何使用Hexo+github搭建博客！》 — Tracegle&url=http://yoursite.com/2019/02/18/Build-Blog/&via=http://yoursite.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/2019/02/18/Build-Blog/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2019/02/17/hello-world/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">Hello World</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
+    <!-- Valine Comments script -->
+    <script>
+        var GUEST_INFO = ['nick','mail','link'];
+        var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+          return GUEST_INFO.indexOf(item) > -1
+        });
+        new Valine({
+            el: '#comments',
+            notify: 'ture' == 'true',
+            verify: 'false' == 'true',
+            appId: "a42W8UCKYSp2zNTHHiirWnmY-gzGzoHsz",
+            appKey: "NONT7lR2jHGMzj1WdnRy8fCc",
+            avatar: "mm",
+            placeholder: "来了都不评论，你们是魔鬼吗？",
+            guest_info: guest_info.length == 0 ? GUEST_INFO : guest_info,
+            pageSize: "10"
+        })
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢大爷~
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/wechat.png" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check" data-wechat="/img/wechat.png" data-alipay="/img/alipay.png">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style="display:none">
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style="display:none">
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>JachinChen &copy; 2019</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2019/02/18/Build-Blog/&title=《如何使用Hexo+github搭建博客！》 — Tracegle&pic=https://i.loli.net/2019/02/12/5c62c33654e1a.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2019/02/18/Build-Blog/&title=《如何使用Hexo+github搭建博客！》 — Tracegle&source=hello!" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2019/02/18/Build-Blog/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《如何使用Hexo+github搭建博客！》 — Tracegle&url=http://yoursite.com/2019/02/18/Build-Blog/&via=http://yoursite.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/2019/02/18/Build-Blog/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=http://yoursite.com/2019/02/18/Build-Blog/" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '死鬼去哪里了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>
