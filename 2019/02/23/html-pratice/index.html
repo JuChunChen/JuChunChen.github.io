@@ -30,7 +30,7 @@
 <meta property="og:description" content="前言  利用闲暇时间抄的一段代码；也算是对html标签，css布局学习的一次实践demo。刚入门水平😵  项目地址：https://github.com/JuChunChen/304 首先感谢慕课@表严肃，表哥的免费入门教程；但是不知道为什么这个教程被删了；他的教程真的都是无水分，有着抛砖引玉地效果；由于首次实践跟着几十分钟地视频写下来也花了我好几个小时。真的太弱了😑">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://i.loli.net/2019/02/23/5c70c9320aba5.png">
-<meta property="og:updated_time" content="2019-02-23T14:32:43.380Z">
+<meta property="og:updated_time" content="2019-03-17T14:53:52.663Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="记录第一个html静态页面">
 <meta name="twitter:description" content="前言  利用闲暇时间抄的一段代码；也算是对html标签，css布局学习的一次实践demo。刚入门水平😵  项目地址：https://github.com/JuChunChen/304 首先感谢慕课@表严肃，表哥的免费入门教程；但是不知道为什么这个教程被删了；他的教程真的都是无水分，有着抛砖引玉地效果；由于首次实践跟着几十分钟地视频写下来也花了我好几个小时。真的太弱了😑">
@@ -105,9 +105,9 @@
             </li>
         
             <li class="waves-block waves-effect">
-              <a href="http://www.weibo.com/5462399669" target="_blank">
-                <i class="icon icon-lg icon-weibo"></i>
-                Weibo
+              <a href="https://twitter.com/u/chen_jachin" target="_blank">
+                <i class="icon icon-lg icon-twitter"></i>
+                Twitter
               </a>
             </li>
         
@@ -159,6 +159,8 @@
 </time>
 
 
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/正常的文章/">正常的文章</a></li></ul>
+
             
         </h5>
     </div>
@@ -187,6 +189,8 @@
             <time class="post-time" title="2019-02-23 12:05:42" datetime="2019-02-23T04:05:42.000Z" itemprop="datePublished">2019-02-23</time>
 
             
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/正常的文章/">正常的文章</a></li></ul>
+
 
 
             
@@ -231,7 +235,7 @@
 </ol>
 <ul>
 <li><code>line-height: height</code></li>
-<li><code>absolute + transform</code>  内联元素position:absolute,top:0;left:0后会转为块状元素,且高宽为程序员设置的宽高；transform移动</li>
+<li><code>absolute + transform</code>  内联元素position:absolute,top:0;left:0后会转为块状元素,且高宽为程序员设置的宽高；transform移动50%</li>
 <li><code>flex + align-items: center</code></li>
 <li><code>table</code></li>
 </ul>
@@ -258,6 +262,13 @@
 <li>父级设置高度</li>
 </ul>
 </li>
+</ul>
+<p>页面渲染时，dom 元素所采用的 <strong>布局模型</strong>。可通过<code>box-sizing</code>进行设置。根据计算宽高的区域可分为：</p>
+<ul>
+<li><code>content-box</code> (W3C 标准盒模型)为box-sizeing默认值，(heigtht + border + padding)，故可能会被内容把盒子撑开。</li>
+<li><code>border-box</code> (IE 盒模型)border-box就是用<strong>元素内容和padding和border一起决定width和height</strong>，width和元素的内容以及padding和border相互制约</li>
+<li><code>padding-box</code></li>
+<li><code>margin-box</code></li>
 </ul>
 <h3 id="bfc-block-fromatting-context">BFC (Block Fromatting Context)</h3>
 <p><strong>块级格式化上下文</strong>，是一个独立的渲染区域，让处于 BFC 内部的元素与外部的元素相互隔离，使内外元素的定位不会相互影响。</p>
@@ -315,7 +326,7 @@
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2019-02-23T14:32:43.380Z" itemprop="dateUpdated">2019-02-23 22:32:43</time>
+    最后更新时间：<time datetime="2019-03-17T14:53:52.663Z" itemprop="dateUpdated">2019-03-17 22:53:52</time>
 </span><br>
 
 
@@ -396,14 +407,21 @@
     </div>
 
     
-<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2019/03/10/AndroidLearningNote/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">AndroidLearningNote</h4>
+      </a>
+    </div>
   
 
   
     <div class="waves-block waves-effect next">
-      <a href="/2019/02/18/Build-Blog/" id="post-next" class="post-nav-link">
+      <a href="/2019/02/20/Learn51/" id="post-next" class="post-nav-link">
         <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
-        <h4 class="title">如何使用Hexo+github搭建博客！</h4>
+        <h4 class="title">一小段51单片机的折腾之旅!</h4>
       </a>
     </div>
   

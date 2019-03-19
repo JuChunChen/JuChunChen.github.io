@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>一小段51单片机的折腾之旅! | Tracegle | 探索时间的迹线!</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#D32F2F">
+    
+    
+    <meta name="keywords" content="单片机">
+    <meta name="description" content="前言 很有幸在寒假借了几天单片机玩玩，我拿到的是STC(宏晶公司)生产的89C52RC实验室开发板；STC89C52RC是一种低功耗、高性能CMOS8位MCU(微控制器),借了一个寒假，但是因为懒，真正也就玩了几天，看了下清翔的教程，唉，三分钟热度的毛病又犯了。😭但还是知道了很多以前压根不知道的知识。下面是我对那三五天的一点点知识总结。就学了一丢丢皮毛；以下内容为网络资料内容整理和自己的一些心得">
+<meta name="keywords" content="单片机">
+<meta property="og:type" content="article">
+<meta property="og:title" content="一小段51单片机的折腾之旅!">
+<meta property="og:url" content="http://yoursite.com/2019/02/20/Learn51/index.html">
+<meta property="og:site_name" content="Tracegle">
+<meta property="og:description" content="前言 很有幸在寒假借了几天单片机玩玩，我拿到的是STC(宏晶公司)生产的89C52RC实验室开发板；STC89C52RC是一种低功耗、高性能CMOS8位MCU(微控制器),借了一个寒假，但是因为懒，真正也就玩了几天，看了下清翔的教程，唉，三分钟热度的毛病又犯了。😭但还是知道了很多以前压根不知道的知识。下面是我对那三五天的一点点知识总结。就学了一丢丢皮毛；以下内容为网络资料内容整理和自己的一些心得">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://i.loli.net/2019/03/17/5c8e555ae6213.jpg">
+<meta property="og:image" content="https://i.loli.net/2019/03/17/5c8e6359d05b1.png">
+<meta property="og:image" content="https://i.loli.net/2019/03/18/5c8f300ae4015.png">
+<meta property="og:image" content="https://i.loli.net/2019/03/18/5c8e7014698b8.png">
+<meta property="og:image" content="https://i.loli.net/2019/03/18/5c8e70e24f31d.png">
+<meta property="og:updated_time" content="2019-03-18T12:14:24.162Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="一小段51单片机的折腾之旅!">
+<meta name="twitter:description" content="前言 很有幸在寒假借了几天单片机玩玩，我拿到的是STC(宏晶公司)生产的89C52RC实验室开发板；STC89C52RC是一种低功耗、高性能CMOS8位MCU(微控制器),借了一个寒假，但是因为懒，真正也就玩了几天，看了下清翔的教程，唉，三分钟热度的毛病又犯了。😭但还是知道了很多以前压根不知道的知识。下面是我对那三五天的一点点知识总结。就学了一丢丢皮毛；以下内容为网络资料内容整理和自己的一些心得">
+<meta name="twitter:image" content="https://i.loli.net/2019/03/17/5c8e555ae6213.jpg">
+    
+        <link rel="alternate" type="application/atom+xml" title="Tracegle" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="https://i.loli.net/2017/11/26/5a19c0b50432e.png">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide">
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(https://i.loli.net/2019/02/12/5c6289f6994c6.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="https://i.loli.net/2019/02/12/5c62c33654e1a.png">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">JachinChen</h5>
+          <a href="mailto:63039844@qq.com" title="63039844@qq.com" class="mail">63039844@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/">
+                <i class="icon icon-lg icon-home"></i>
+                Home
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives">
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags">
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories">
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/juchunchen" target="_blank">
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://twitter.com/u/chen_jachin" target="_blank">
+                <i class="icon icon-lg icon-twitter"></i>
+                Twitter
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/about">
+                <i class="icon icon-lg icon-code"></i>
+                About
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">一小段51单片机的折腾之旅!</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">一小段51单片机的折腾之旅!</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2019-02-20T13:59:55.000Z" itemprop="datePublished" class="page-time">
+  2019-02-20
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/非正常的文章/">非正常的文章</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#前言"><span class="post-toc-number">1.</span> <span class="post-toc-text">前言</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#learning-notes"><span class="post-toc-number">2.</span> <span class="post-toc-text">Learning notes</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#基础组成"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">基础组成</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#常用延时方法"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">常用延时方法</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#定时器-计数器中断"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">定时器/计数器中断</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#经验杂谈"><span class="post-toc-number">2.4.</span> <span class="post-toc-text">经验杂谈</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#心得体会"><span class="post-toc-number">2.5.</span> <span class="post-toc-text">心得体会</span></a></li></ol></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-Learn51" class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">一小段51单片机的折腾之旅!</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2019-02-20 21:59:55" datetime="2019-02-20T13:59:55.000Z" itemprop="datePublished">2019-02-20</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/非正常的文章/">非正常的文章</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style="display:none">
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h2 id="前言">前言</h2>
+<p>很有幸在寒假借了几天单片机玩玩，我拿到的是STC(<a href="http://www.stcmcu.com/" target="_blank" rel="noopener">宏晶公司</a>)生产的89C52RC实验室开发板；STC89C52RC是一种低功耗、高性能CMOS8位MCU(微控制器),借了一个寒假，但是因为懒，真正也就玩了几天，看了下清翔的教程，唉，三分钟热度的毛病又犯了。😭但还是知道了很多以前压根不知道的知识。下面是我对那三五天的一点点知识总结。就学了一丢丢皮毛；以下内容为网络资料内容整理和自己的一些心得内容。</p>
+<h2 id="learning-notes">Learning notes</h2>
+<hr>
+<h3 id="基础组成">基础组成</h3>
+<p>一.单片机内部资源三大指标：**</p>
+<p>a.FLASH（程序存储控件<rom>） 相当于： 电脑硬盘（断点后还保存在）</rom></p>
+<p>b.RAM（内存） 相当于： 电脑内存（存储一些）</p>
+<p>c.SFR（特殊功能寄存器）</p>
+<p><strong>二.单片机的最小系统</strong><br>
+1.电源<br>
+主流单片机采用5V和3.3V的电压，供电电路40引脚接+5V，通常也成为VCC或VDD，代表电源正极；20引脚接GND,代表电源的负极，也是接地的意思。<br>
+2.晶振<br>
+晶体振荡器，作用是为单片机系统提供基准时钟信号，一直不停振荡，接有电容，作用是帮助晶体振荡，维持振荡信号的稳定。晶振被称为<strong>单片机的心脏</strong>，11.0592MHz代表晶振的频率，每一秒钟，晶振电路可以振动11.0592M次，由于不同单片机的晶振批频率的不同。所以相同的代码在不同单片机上就可能不能运行了；需要<strong>修改延时函数，匹配时序</strong>。<br>
+3.复位电路RST<br>
+接在单片机的9引脚RST复位引脚上，复位一般分为：上电复位，手动复位和程序自动复位。当程序运行时遭到干扰而死机可以按下复位键让程序重新初始化重新运行。</p>
+<blockquote>
+<p>原理详解：<a href="https://blog.csdn.net/gjxman1314/article/details/54985385%EF%BC%8C%E6%83%B3%E6%B7%B1%E5%85%A5%E4%BA%86%E8%A7%A3%E7%9A%84%E6%9C%8B%E5%8F%8B%E4%BB%AC%E5%8F%AF%E4%BB%A5%E5%8E%BB%E7%9C%8B%E7%9C%8B%E3%80%82" target="_blank" rel="noopener">https://blog.csdn.net/gjxman1314/article/details/54985385，想深入了解的朋友们可以去看看。</a></p>
+</blockquote>
+<p><img src="https://i.loli.net/2019/03/17/5c8e555ae6213.jpg" alt="STC89C62RC.jpg"></p>
+<p>[<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2019/03/17/5c8e6359d05b1.png" alt="51原理图.png](https://i.loli.net/2019/03/17/5c8e6359d05b1.png)" title="">
+                </div>
+                <div class="image-caption">51原理图.png](https://i.loli.net/2019/03/17/5c8e6359d05b1.png)</div>
+            </figure></p>
+<h3 id="常用延时方法">常用延时方法</h3>
+<p>非精确延时，精确延时</p>
+<p><em>nop</em>();(需要include&lt;intrins.h&gt;)</p>
+<p>利用定时器进行定时</p>
+<p>unsigned char:所占字节1.取值范围 0 - 255</p>
+<p>unsigned int 所在字节2 取值范围0-65535</p>
+<p>我们用uint8 uint16等来缩写来代替，</p>
+<p>typedef unisigned char uint8;</p>
+<p>typedef unsigned int uint16;</p>
+<h3 id="定时器-计数器中断">定时器/计数器中断</h3>
+<p><a href="https://www.baidu.com/s?wd=%E6%97%B6%E9%92%9F%E5%91%A8%E6%9C%9F&amp;tn=24004469_oem_dg&amp;rsv_dl=gh_pl_sl_csd" target="_blank" rel="noopener">时钟周期</a>：1/时钟源   1/11059200s（晶振）</p>
+<p>机器周期：普通51一个机器周期是12个时钟周期</p>
+<ul>
+<li>定时器是用来计时的，内部有一个寄存器，开始计时后，寄存器的值每经过一个机器周期就会自动加一，可以把机器周期理解为定时器的计数周期。16位的定时器，加到65535，再加1就算溢出，溢出后值变为0。</li>
+</ul>
+<p><strong>定时器的寄存器</strong></p>
+<p><img src="https://i.loli.net/2019/03/18/5c8f300ae4015.png" alt="TMOD.png"></p>
+<p>[<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2019/03/18/5c8e7014698b8.png" alt="寄存器.png](https://i.loli.net/2019/03/18/5c8e7014698b8.png)" title="">
+                </div>
+                <div class="image-caption">寄存器.png](https://i.loli.net/2019/03/18/5c8e7014698b8.png)</div>
+            </figure></p>
+<ol start="2">
+<li>
+<ol>
+<li>对TMOD赋值,配置工作模式；，以确定T0和T1的工作方式。</li>
+</ol>
+</li>
+<li>计算初值,并将其写入TH0、TL0或TH1、TL1。</li>
+<li>中断方式时，则对EA赋值，开放定时器中断。</li>
+<li>使TR0或TR1置位，启动定时/计数器定时或计数</li>
+<li>判断TCON寄存器的TF0位，监测定时器溢出情况。</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">void Timer0Init()</span><br><span class="line">&#123;</span><br><span class="line">	TMOD|=0X01;//选择为定时器0模式，工作方式1，仅用TR0打开启动。</span><br><span class="line">	TH0=0XFC;	//给定时器赋初值，定时1ms</span><br><span class="line">	TL0=0X18;	</span><br><span class="line">	ET0=1;//打开定时器0中断允许</span><br><span class="line">	EA=1;//打开总中断</span><br><span class="line">	TR0=1;//打开定时器			</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>[<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2019/03/18/5c8e70e24f31d.png" alt="原理.png](https://i.loli.net/2019/03/18/5c8e70e24f31d.png)" title="">
+                </div>
+                <div class="image-caption">原理.png](https://i.loli.net/2019/03/18/5c8e70e24f31d.png)</div>
+            </figure></p>
+<table>
+<thead>
+<tr>
+<th>称</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>TF</td>
+<td>定时器溢出标志。溢出时候，该位自动置1.</td>
+</tr>
+<tr>
+<td>TMOD</td>
+<td>M1M0：工作方式设置位。定时/计数器有四种工作方式。</td>
+</tr>
+<tr>
+<td>TCON</td>
+<td>用于控制其启动和中断申请。</td>
+</tr>
+<tr>
+<td>C/T</td>
+<td>C/T ＝0为定时模式;C/T =1为计数模式。</td>
+</tr>
+<tr>
+<td>TR</td>
+<td>定时器运行控制位，置1开始计时，清0停止计时.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>GATE是门控位, GATE＝0时，用于控制定时器的启动是否受外部中断源信号的影响。只要用软件使TCON中的TR0或TR1为1，就可以启动定时/计数器工作；GATA＝1时，要用软件使TR0或TR1为1，同时外部中断引脚INT0/1也为高电平时，才能启动定时/计数器工作。即此时定时器的启动条件，加上了INT0/1引脚为高电平这一条件。</strong></p>
+<p>终端执行是硬件清0，或者软件清0.</p>
+<p>INT1引脚：</p>
+<blockquote>
+<p>M1,M0:<br>
+0x00 模式0 0x 01模式1  0x10模式2   0x11模式3<br>
+模式1:16位的计数器（TH1，TL1）<br>
+模式2：自动装载8位计数器。主要用在串口波特率发生器。精准信号脉冲<br>
+模式0和模式3几乎不用。</p>
+<p>模式原理详解：<a href="https://blog.csdn.net/whalefall/article/details/79900817" target="_blank" rel="noopener">https://blog.csdn.net/whalefall/article/details/79900817</a></p>
+</blockquote>
+<p>TCON和TMOD复位后都会自动变为0x00  复位可以有自动复位和引脚复位</p>
+<p>TMOD用于设置定时/计数器的工作方式，低四位用于T0，高四位用于T1</p>
+<p>TCON的低4位用于控制外部中断,已在前面介绍。TCON的高4位用于控</p>
+<p>制定时/计数器的启动和中断申请</p>
+<p>sbit位声明 sfr 地址寄存器</p>
+<p>sfr P0      = 0x80;  // P0的地址</p>
+<p>sfr TCON  = 0x88;</p>
+<p>sbit ITO    = TCON^0;   // sbit是位声明</p>
+<p>sbit LED   = P0^0;</p>
+<p>中断是指<a href="https://www.baidu.com/s?wd=CPU&amp;tn=24004469_oem_dg&amp;rsv_dl=gh_pl_sl_csd" target="_blank" rel="noopener">CPU</a>在执行当前程序的过程中，由于某种随机出现的外设请求或CPU内部的异常事件,使CPU暂停正在执行的程序而转去 执行相应的服务处理程序；当服务处理程序运行完毕后，CPU再返回到暂停处继续执行原来的程序。</p>
+<p><strong>中断是独立于死循环程序的，，死循环碰到中断时停止。</strong></p>
+<p>接口初始化；寄存器初始化；死循环操作</p>
+<p>用中断精准延时。在中断周期空隙处理数据，中断响应后输出</p>
+<h3 id="经验杂谈">经验杂谈</h3>
+<p><strong>5V就是高电频，0V就是低电平，数字电路，就是一个高一个低</strong>，这就是数字信号；PWM波，方波等波形信号的来源也是计算机控制电路的来源</p>
+<p>高电平（正极）接VCC  ，低电平（负极）接GND，这样就给单片机供电了。</p>
+<p>电流对直流来说相当于断开的。</p>
+<p>&lt;&lt; 左移      &gt;&gt;右移</p>
+<p>0xf0 = 11110000  左移后：11100000 (最低位填0补充)</p>
+<p>右移后:01111000 (最高位填0补充)</p>
+<p><strong>按位取反符号~：</strong></p>
+<p>取反后1变0,0变为1；</p>
+<p>电容：储能，滤波，通交流隔直流，耦合，补偿，充放电</p>
+<p>电容两端电压不能突变，在规定时间内电压未达设定，则可停止，作检测保护。电容充放电起延时作用</p>
+<p>电感两端电流不能突变。</p>
+<p>PWM波，占空比不同传的值也不同；转为数字信号</p>
+<p>焊接，被焊物尽可能去氧化层及杂质。助焊剂；</p>
+<p>电容标记105，代表该电容的容量，以三位数标注法，前两位是有效数字，第三位是位率（即为10的多少次方），单位为pF，105=10*10的5次方，105=1000000pF=1000nF=1μF。</p>
+<p>Altium Designer PCB电路设计</p>
+<p>先构建pcb库原件，按place可置放到原理图中 按shift可复制，按住x键拖动鼠标变成镜像原件，可用align对齐</p>
+<h3 id="心得体会">心得体会</h3>
+<blockquote>
+<p>接触这东西之后才知道有嵌入式开发这东西；51虽然看起来小小的；其实用处还是很大的，要学的东西非常多；进阶的还要STM32;ARM架构等也是一门大学问。初次接触，我认为芯片手册和看资料是很重要的；单片机有很多引脚可以定义，都是通过设置特殊的寄存器地址来实现其各种功能的。像简单的跑马灯，数码管都是通过定义特殊寄存器地址实现的，但是即使简单刚接触还是很懵逼地，还有AD采集输出PWM波啥的也如此，是的，以上都只是一个纯小白的一次记录，排版也很乱，因为懒惰，很多都没有去实践过；比如串行通讯；蓝牙通讯；舵机控制等；也没折腾过淘宝的热门套件。以后有机会买一个开发板，树莓派啥的来深入学习一下。这东西我还是推荐要先系统性地看看视频或者书了解整体流程后在学，不然就和我一样乱玩乱学，后面寄存器看到脑壳疼就凉凉了。还有就是一定要多看看别人写的代码，厂家一般都会提供资料和源码例子，看完真的会受益匪浅。</p>
+</blockquote>
+<blockquote>
+<p>文章摘要说明：</p>
+<p><a href="https://blog.csdn.net/qq_22512533/article/details/46961545" target="_blank" rel="noopener">https://blog.csdn.net/qq_22512533/article/details/46961545</a></p>
+<p><a href="https://blog.csdn.net/qq_38405680/article/details/81219722" target="_blank" rel="noopener">https://blog.csdn.net/qq_38405680/article/details/81219722</a></p>
+<p><a href="https://blog.csdn.net/whalefall/article/details/79900817" target="_blank" rel="noopener">https://blog.csdn.net/whalefall/article/details/79900817</a></p>
+</blockquote>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2019-03-18T12:14:24.162Z" itemprop="dateUpdated">2019-03-18 20:14:24</time>
+</span><br>
+
+
+        
+        生命不息，折腾不止！一起在迹线里成长。
+        
+    </div>
+    
+    <footer>
+        <a href="http://yoursite.com">
+            <img src="https://i.loli.net/2019/02/12/5c62c33654e1a.png" alt="JachinChen">
+            JachinChen
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/单片机/">单片机</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2019/02/20/Learn51/&title=《一小段51单片机的折腾之旅!》 — Tracegle&pic=https://i.loli.net/2019/02/12/5c62c33654e1a.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2019/02/20/Learn51/&title=《一小段51单片机的折腾之旅!》 — Tracegle&source=hello!" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2019/02/20/Learn51/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《一小段51单片机的折腾之旅!》 — Tracegle&url=http://yoursite.com/2019/02/20/Learn51/&via=http://yoursite.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/2019/02/20/Learn51/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2019/02/23/html-pratice/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">记录第一个html静态页面</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2019/02/18/Build-Blog/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">如何使用Hexo+github Page搭建博客！</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
+    <!-- Valine Comments script -->
+    <script>
+        var GUEST_INFO = ['nick','mail','link'];
+        var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+          return GUEST_INFO.indexOf(item) > -1
+        });
+        new Valine({
+            el: '#comments',
+            notify: 'ture' == 'true',
+            verify: 'false' == 'true',
+            appId: "a42W8UCKYSp2zNTHHiirWnmY-gzGzoHsz",
+            appKey: "NONT7lR2jHGMzj1WdnRy8fCc",
+            avatar: "mm",
+            placeholder: "来了都不评论，你们是魔鬼吗？",
+            guest_info: guest_info.length == 0 ? GUEST_INFO : guest_info,
+            pageSize: "10"
+        })
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢大爷~
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/wechat.png" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check" data-wechat="/img/wechat.png" data-alipay="/img/alipay.png">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style="display:none">
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style="display:none">
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>JachinChen &copy; 2019</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2019/02/20/Learn51/&title=《一小段51单片机的折腾之旅!》 — Tracegle&pic=https://i.loli.net/2019/02/12/5c62c33654e1a.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2019/02/20/Learn51/&title=《一小段51单片机的折腾之旅!》 — Tracegle&source=hello!" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2019/02/20/Learn51/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《一小段51单片机的折腾之旅!》 — Tracegle&url=http://yoursite.com/2019/02/20/Learn51/&via=http://yoursite.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/2019/02/20/Learn51/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=http://yoursite.com/2019/02/20/Learn51/" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '死鬼去哪里了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>
